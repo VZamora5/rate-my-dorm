@@ -93,7 +93,7 @@ body {
 }
 
 .dorm-input {
-    background: white;
+    background: var(--white);
     border: none;
     border-radius: 10px;
     padding: 5px 20px;
@@ -101,9 +101,38 @@ body {
     width: 200px;
 }
 
-.stars {
-    font-size: 1.8rem;
-    margin-left: 10px;
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse; /* Important for the hover effect logic */
+    justify-content: flex-start;
+}
+
+/* Hide the actual radio circles */
+.star-rating input {
+    display: none;
+}
+
+/* Default Star Style */
+.star-rating label {
+    font-size: 2rem;
+    color: #ccc; /* Light gray for unselected stars */
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+/* Hover & Checked Logic: Color stars gold */
+.star-rating label:hover,
+.star-rating label:hover ~ label,
+.star-rating input:checked ~ label {
+    color: #f5b301; /* Gold color */
+}
+
+/* Keep the "selected" stars gold even when not hovering */
+.star-rating input:checked + label:hover,
+.star-rating input:checked ~ label:hover,
+.star-rating input:checked ~ label:hover ~ label,
+.star-rating label:hover ~ input:checked ~ label {
+    color: #f5b301;
 }
 
 .divider {
