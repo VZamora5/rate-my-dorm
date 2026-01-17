@@ -17,7 +17,7 @@ templates = Jinja2Templates(directory="templates")
 async def home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
-@app.get("/add-review", response_class=HTMLResponse)
+@app.get("/create-review", response_class=HTMLResponse)
 async def add_review(request: Request):
     return templates.TemplateResponse("review.html", {"request": request})
 
