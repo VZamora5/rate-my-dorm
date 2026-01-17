@@ -1,7 +1,7 @@
 /*Custom*/
 @font-face {
     font-family: "Borsork";
-    src: url(/static/js/boorsok.ttf) format("truetype");
+    src: url(.../boorsok.ttf) format("truetype");
     font-weight: bold;
     font-style: normal;
 }
@@ -61,6 +61,71 @@ body {
     background-color: var(--crimson-red); 
     color: var(--white);
     font-weight: bold;
+}
+
+.review-main {
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+    font-family: 'Agdasima', sans-serif;
+}
+
+.review-card {
+    background-color: var(--crimson-red);
+    color: white;
+    width: 90%;
+    max-width: 900px;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.review-card h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.dorm-input {
+    background: white;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 20px;
+    font-family: 'Agdasima', sans-serif;
+    width: 200px;
+}
+
+.stars {
+    font-size: 1.8rem;
+    margin-left: 10px;
+}
+
+.divider {
+    border: 0;
+    border-top: 1px solid rgba(255,255,255,0.5);
+    margin: 20px 0;
+}
+
+.rating-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.review-text-area textarea {
+    width: 100%;
+    height: 150px;
+    border-radius: 15px;
+    padding: 15px;
+    margin-top: 10px;
+    border: none;
+    font-family: 'Agdasima', sans-serif;
 }
 
 
