@@ -1,0 +1,66 @@
+/*Custom*/
+@font-face {
+    font-family: "Borsork";
+    src: url(/static/js/boorsok.ttf) format("truetype");
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* Color Palette */
+:root {
+    --crimson-red: #AC2B37;
+    --gray: #a9b0b7;
+    --black: #000000;
+    --white: #FFFFFF;
+}
+
+/* Headings - Borsork Font */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Borsork', sans-serif;
+}
+
+/* Paragraphs - Agdasima Font */
+p {
+    font-family: 'Agdasima', sans-serif;
+}
+
+/* Body Default */
+body {
+    background-color: var(--white)
+}
+
+.navbar {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background-color: var(--white);
+}
+
+.nav-links {
+    display: flex;
+    gap: 10px; 
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-family: 'Borsork', sans-serif;
+    font-weight: bold;
+    color: var(--crimson-red);
+    font-size: 1.5rem;
+    
+    padding: 10px 20px;
+    border-radius: 4px;
+    
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: inline-block;
+}
+
+.nav-links a:hover {
+    background-color: var(--crimson-red); 
+    color: var(--white);
+    font-weight: bold;
+}
+
+
