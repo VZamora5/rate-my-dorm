@@ -115,7 +115,7 @@ overall_ratings = [
 ]
 
 db["dorms"].insert_many(buildings)
-db["review"].insert_many(reviews)
+db["reviews"].insert_many(reviews)
 db["overall_ratings"].insert_many(overall_ratings)
 
 # all_dorms = db["dorms"].count_documents({})  # find() with no filter returns everything
