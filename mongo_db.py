@@ -7,10 +7,13 @@ uri = "mongodb+srv://sofi-mcc057:sOfIa2006@cluster0.8ndz01r.mongodb.net/?appName
 client = MongoClient(uri, server_api=ServerApi('1'))
 
 db = client.get_database("rate_my_dorm")
-dorms = db["dorms"] # create dorm table
+dorms = db["dorm"] # create dorm table
 tags = db["tags"] # create tags table
-reviews = db["reviews"]
+reviews = db["review"]
+overall_ratings = db["overall_rating"]
 
 def insert_dorm(document):
     dorms.insert_one(document)
 
+def dorms_with_tag(tag):
+    dorms.tags.find({"tags" : tag})

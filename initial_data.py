@@ -1,6 +1,8 @@
 from mongo_db import db
 
 db["dorms"].delete_many({})
+db["reviews"].delete_many({})
+db["overall_ratings"].delete_many({})
 
 buildings = [
     {
@@ -89,11 +91,36 @@ buildings = [
     },
 ]
 
-db["dorms"].insert_many(buildings)
+reviews = [
+    {
+        "roomSize": 4,
+        "diningProximity": 4,
+        "academicProximity": 4,
+        "amenities": 4,
+        "comment": 4,
+        "dormID": 4
+    }
+]
 
-all_dorms = db["dorms"].count_documents({})  # find() with no filter returns everything
+overall_ratings = [
+    {
+        "overall": 4,
+        "roomSize": 4,
+        "diningProximity": 4,
+        "academicProximity": 4,
+        "amenities": 4,
+        "reviewCount": 1,
+        "dormID": 4
+    }
+]
+
+db["dorms"].insert_many(buildings)
+db["review"].insert_many(reviews)
+db["overall_ratings"].insert_many(overall_ratings)
+
+# all_dorms = db["dorms"].count_documents({})  # find() with no filter returns everything
 
 # for dorm in all_dorms:
 #     print(dorm)
 
-print(all_dorms)
+print("done")
