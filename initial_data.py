@@ -99,12 +99,21 @@ reviews = [
         "amenities": 4,
         "comment": 4,
         "dormID": 4
+    }, 
+
+    {
+        "roomSize": 0,
+        "diningProximity": 0,
+        "academicProximity": 0,
+        "amenities": 0,
+        "comment": "great dorm",
+        "dormID": 4
     }
 ]
 
 overall_ratings = [
     {
-        "overall": 4,
+        "overallRating": 4,
         "roomSize": 4,
         "diningProximity": 4,
         "academicProximity": 4,
