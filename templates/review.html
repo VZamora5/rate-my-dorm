@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,31 +16,37 @@
 
 <body>
     <nav class = "navbar">
-        <a href = "index.html"> <img src="/static/js/Title-Image.svg" alt="Rate My Dorm Logo"></a>
+        <a href = "/"> <img src="/static/js/Title-Image.svg" alt="Rate My Dorm Logo"></a>
         <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href = "dorms.html"> Dorms</a>
-            <a href = "housing.html"> Housing Information</a>
-            <a href="review.html">Add Review</a>
+            <a href="/">Home</a>
+            <a href ="/dorms"> Dorms</a>
+            <a href ="/housing-info"> Housing Information</a>
+            <a href="/add-review">Add Review</a>
         </div>
     </nav>
 
     <section class="review-main">
         <div class="review-card">
             <h2>Add a Review!</h2>
-            
+
             <form action="/submit-review" method="POST">
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Dorm*:</label>
+                        <label>Dorm:</label>
                         <select name="dorm" class="dorm-input">
                             <option>Morgan Hall</option>
-                            <option>Riley Hall</option>
+                            <option>Sanford Riley Hall</option>
+                            <option>Daniels Hall</option>
+                            <option>East Hall</option>
+                            <option>Faraday Hall</option>
+                            <option>Founders Hall</option>
+                            <option>Institute Hall</option>
+                            <option>Messenger Hall</option>
+                            <option>Stoddard Complex</option>
+                            <option>WPI Townhouses</option>
+                            <option>Wachusett House</option>
+                            <option>Trowbridge House</option>
                         </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Overall Rating*:</label>
-                        <span class="stars">★★★★★</span>
                     </div>
                 </div>
 
@@ -48,10 +55,69 @@
                 <div class="additional-ratings">
                     <p>Additional Ratings:</p>
                     <div class="rating-grid">
-                        <div class="grid-item">Room Size: <span class="stars">★★★★★</span></div>
-                        <div class="grid-item">Academic Proximity: <span class="stars">★★★★★</span></div>
-                        <div class="grid-item">Dining Proximity: <span class="stars">★★★★★</span></div>
-                        <div class="grid-item">Amenities: <span class="stars">★★★★★</span></div>
+                        <div class="grid-item">
+                            <label>Room Size:</label>
+                            <div class="star-rating">
+                                <input type="radio" id="room5" name="room_rating" value="5" /><label
+                                    for="room5">★</label>
+                                <input type="radio" id="room4" name="room_rating" value="4" /><label
+                                    for="room4">★</label>
+                                <input type="radio" id="room3" name="room_rating" value="3" /><label
+                                    for="room3">★</label>
+                                <input type="radio" id="room2" name="room_rating" value="2" /><label
+                                    for="room2">★</label>
+                                <input type="radio" id="room1" name="room_rating" value="1" /><label
+                                    for="room1">★</label>
+                            </div>
+                        </div>
+
+                        <div class="grid-item">
+                            <label>Academic Proximity:</label>
+                            <div class="star-rating">
+                                <input type="radio" id="acad5" name="acad_rating" value="5" /><label
+                                    for="acad5">★</label>
+                                <input type="radio" id="acad4" name="acad_rating" value="4" /><label
+                                    for="acad4">★</label>
+                                <input type="radio" id="acad3" name="acad_rating" value="3" /><label
+                                    for="acad3">★</label>
+                                <input type="radio" id="acad2" name="acad_rating" value="2" /><label
+                                    for="acad2">★</label>
+                                <input type="radio" id="acad1" name="acad_rating" value="1" /><label
+                                    for="acad1">★</label>
+                            </div>
+                        </div>
+
+                        <div class="grid-item">
+                            <label>Dining Proximity:</label>
+                            <div class="star-rating">
+                                <input type="radio" id="dine5" name="dine_rating" value="5" /><label
+                                    for="dine5">★</label>
+                                <input type="radio" id="dine4" name="dine_rating" value="4" /><label
+                                    for="dine4">★</label>
+                                <input type="radio" id="dine3" name="dine_rating" value="3" /><label
+                                    for="dine3">★</label>
+                                <input type="radio" id="dine2" name="dine_rating" value="2" /><label
+                                    for="dine2">★</label>
+                                <input type="radio" id="dine1" name="dine_rating" value="1" /><label
+                                    for="dine1">★</label>
+                            </div>
+                        </div>
+
+                        <div class="grid-item">
+                            <label>Amenities:</label>
+                            <div class="star-rating">
+                                <input type="radio" id="amen5" name="amen_rating" value="5" /><label
+                                    for="amen5">★</label>
+                                <input type="radio" id="amen4" name="amen_rating" value="4" /><label
+                                    for="amen4">★</label>
+                                <input type="radio" id="amen3" name="amen_rating" value="3" /><label
+                                    for="amen3">★</label>
+                                <input type="radio" id="amen2" name="amen_rating" value="2" /><label
+                                    for="amen2">★</label>
+                                <input type="radio" id="amen1" name="amen_rating" value="1" /><label
+                                    for="amen1">★</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -67,9 +133,10 @@
             </form>
         </div>
     </section>
-    
+
     <footer class="footer">
         <p>© 2016 The pissers | All Rights Reserved</p>
     </footer>
 </body>
+
 </html>
