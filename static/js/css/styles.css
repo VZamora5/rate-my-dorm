@@ -128,4 +128,31 @@ body {
     font-family: 'Agdasima', sans-serif;
 }
 
+/* Container to handle the centering */
+.submit-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* The button styling */
+.submit-review-btn {
+    background-color: var(--white); /* White background */
+    color: var(--crimson-red);     /* Crimson text */
+    font-family: 'Borsork', sans-serif; /* Using your heading font for impact */
+    font-size: 1.5rem;
+    padding: 12px 40px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Hover effect to make it feel interactive */
+.submit-review-btn:hover {
+    background-color: #f0f0f0; /* Slight gray tint on hover */
+    transform: scale(1.05);     /* Subtle pop-out effect */
+}
+
 
