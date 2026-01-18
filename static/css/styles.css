@@ -452,42 +452,44 @@ body {
     
 }
 
-.list-container {
+.dorm-list-wrapper {
     display: flex;
-    justify-content: center; 
-    align-items: center;     
+    justify-content: center;
     width: 100%;
-    margin-top: 20px;
+    margin: 50px 0;
 }
 
-.dorm-list {
-    list-style-type: none;
+.styled-dorm-list {
+    list-style-type: none; /* Remove default dots */
     padding: 0;
     margin: 0;
-    display: inline-block; 
-
-.dorm-list li {
-    font-family: 'Agdasima', sans-serif;
-    color: #AC2B37;
-    font-size: 1.8rem; 
-    margin-bottom: 15px;
     display: flex;
-    align-items: center;
-    text-align: left;
+    flex-direction: column;
+    align-items: flex-start; /* Keeps text aligned left relative to bullets */
 }
 
-.dorm-list li::before {
+.styled-dorm-list li {
+    font-family: 'Agdasima', sans-serif;
+    color: #AC2B37; /* WPI Crimson Red */
+    font-size: 3rem; /* Scaled up significantly */
+    font-weight: 700;
+    text-transform: uppercase; /* Makes it more 'stylish' and bold */
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+}
+
+/* Add the Gompei PFP as the custom bullet */
+.styled-dorm-list li::before {
     content: "";
     display: inline-block;
-    width: 35px; 
-    height: 35px;
+    width: 60px;  /* Larger icon to match large text */
+    height: 60px;
     background-image: url('./GompeiPFP.png');
     background-size: contain;
     background-repeat: no-repeat;
-    margin-right: 15px;
-}
-
-.dorm-list li a {
-    color: #AC2B37;
-    text-decoration: none;
+    margin-right: 20px;
+    /* Optional: Add a slight drop shadow to Gompei to make him pop */
+    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2));
 }
