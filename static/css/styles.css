@@ -447,8 +447,8 @@ body {
     flex-direction: column;
     justify-content: start;
     background-color: #D9D9D9;
-    border-radius: 0px 0px 15px 15px;
-    border: solid 2px yellow;
+    border-radius: 15px;
+    border: solid 2px rgb(51, 51, 51);
 }
 
 .review-ratings-category {
@@ -555,4 +555,10 @@ body {
 .dorm-list li a:hover {
     color: #cb333f !important; /* Slightly brighter crimson */
     transform: translateX(10px); /* Subtle slide to the right */
+}
+
+.form-control {
+    width: 50%;
+    border-radius: 10px;
+    outline: rgba(255,255,255,0.5);
 }
