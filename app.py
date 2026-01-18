@@ -2,7 +2,6 @@ from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
-from mongo_db import json_to_review
 
 from mongo_db import db, reviews, trigger_overall_ratings
 
@@ -37,7 +36,6 @@ async def add_review(request: Request):
 @app.post("/submit-review")
 async def submit_review(
     dorm: str = Form(...),
-    rating: int = Form(...),
     room_rating: int = Form(...),
     acad_rating: int = Form(...),
     dine_rating: int = Form(...),
