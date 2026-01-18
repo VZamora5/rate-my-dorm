@@ -31,6 +31,10 @@ async def to_dorm(request: Request):
 async def housing_info(request: Request):
     return templates.TemplateResponse("housing.html", {"request": request})
 
+@app.get("/login", response_class=HTMLResponse)
+async def login(request: Request):
+    return templates.TemplateResponse("login.html", {"request": request})
+
 @app.get("/get-review", response_class=HTMLResponse)
 async def add_review(request: Request):
     return templates.TemplateResponse("review.html", {"request": request})
