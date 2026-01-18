@@ -5,17 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
     <link href="https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/js/css/styles.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/static/js/rate_my_dorm-favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/static/js/rate_my_dorm-favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/static/js/rate_my_dorm-favicon/favicon-16x16.png">
-    <link rel="manifest" href="/static/js/rate_my_dorm-favicon/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/rate_my_dorm-favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/rate_my_dorm-favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/rate_my_dorm-favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/rate_my_dorm-favicon/site.webmanifest">
+
+    {% block script %}{% endblock %}
+
 </head>
 
 <body>
     <nav class = "navbar">
-        <a href = "/"> <img src="/static/js/Title-Image.svg" alt="Rate My Dorm Logo"></a>
+        <a href = "/"> <img src="/static/Title-Image.svg" alt="Rate My Dorm Logo"></a>
         <div class="nav-links">
             <a href ="/search-dorms"> Dorms</a>
             <a href="/create-review">Add Review</a>

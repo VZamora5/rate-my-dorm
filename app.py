@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
+from pydantic import BaseModel
 
 from mongo_db import db, reviews, trigger_overall_ratings
 
@@ -12,6 +13,9 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Load templates
 templates = Jinja2Templates(directory="templates")
+
+class SearchRequest(BaseModel):
+    search: str
 
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
@@ -28,6 +32,35 @@ async def add_review(request: Request):
 @app.get("/search-dorms", response_class=HTMLResponse)
 async def to_dorm(request: Request):
     return templates.TemplateResponse("search.html", {"request": request})
+
+@app.post("/search-dorms")
+async def dorms(req: SearchRequest):
+    query = req.search
+
+    # Example search logic
+    print(query)
+
+    return {"results": 2}
+
+# Dynamic dorm page route
+@app.get("/dorm-review/{dorm_name}", response_class=HTMLResponse)
+async def dorm_review(request: Request, dorm_name: str):
+    # Here, you would fetch dorm info from your database
+    dorm_info = get_dorm_info(dorm_name)  # <-- replace with your actual DB call
+
+    return templates.TemplateResponse(
+        "dorm-review.html",
+        {
+            "request": request,
+            "dorm_name": dorm_name,
+            "dorm_info": dorm_info
+        }
+    )
+
+# Example helper (replace with real DB)
+def get_dorm_info(name):
+    ...
+    return ...
 
 @app.get("/housing-info", response_class=HTMLResponse)
 async def housing_info(request: Request):
