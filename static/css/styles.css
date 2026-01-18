@@ -452,44 +452,52 @@ body {
     
 }
 
-.dorm-list-wrapper {
+/* Container to center the whole block */
+.list-container {
     display: flex;
     justify-content: center;
     width: 100%;
-    margin: 50px 0;
+    margin-top: 50px;
 }
 
-.styled-dorm-list {
-    list-style-type: none; /* Remove default dots */
+.dorm-list {
+    list-style-type: none; /* Removes standard bullets */
     padding: 0;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Keeps text aligned left relative to bullets */
 }
 
-.styled-dorm-list li {
-    font-family: 'Agdasima', sans-serif;
-    color: #AC2B37; /* WPI Crimson Red */
-    font-size: 3rem; /* Scaled up significantly */
-    font-weight: 700;
-    text-transform: uppercase; /* Makes it more 'stylish' and bold */
-    margin-bottom: 20px;
+.dorm-list li {
     display: flex;
     align-items: center;
-    line-height: 1;
+    margin-bottom: 25px; /* Spacing between dorms */
 }
 
-/* Add the Gompei PFP as the custom bullet */
-.styled-dorm-list li::before {
+/* The stylish Crimson text */
+.dorm-list li a {
+    font-family: 'Agdasima', sans-serif;
+    color: #AC2B37 !important; /* Forces WPI Crimson */
+    text-decoration: none !important; /* Removes the underline */
+    font-size: 3.5rem; /* Makes it big and bold */
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1;
+    transition: 0.3s ease;
+}
+
+/* The Gompei Bullet Point */
+.dorm-list li::before {
     content: "";
     display: inline-block;
-    width: 60px;  /* Larger icon to match large text */
-    height: 60px;
-    background-image: url('./GompeiPFP.png');
+    width: 65px; /* Big enough to match the text */
+    height: 65px;
+    background-image: url('GompeiPFP.png');
     background-size: contain;
     background-repeat: no-repeat;
     margin-right: 20px;
-    /* Optional: Add a slight drop shadow to Gompei to make him pop */
-    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2));
+}
+
+/* Hover effect to make it feel 'premium' */
+.dorm-list li a:hover {
+    color: #cb333f !important; /* Slightly brighter crimson */
+    transform: translateX(10px); /* Subtle slide to the right */
 }
