@@ -39,13 +39,16 @@ async def dorms(req: SearchRequest):
     # Get the search string from the request
     search_text = req.search.strip()
 
-    # Query with partial match (case-insensitive)
-    query = list(db["dorms"].find({"name": {"$regex": search_text, "$options": "i"}}))
+    if search_text != "all":
+        # Query with partial match (case-insensitive)
+        query = list(db["dorms"].find({"name": {"$regex": search_text, "$options": "i"}}))
 
-    if not query:  # search by tag, partial match
-        query = db["dorms"].find({
-            "tags": {"$elemMatch": {"$regex": search_text, "$options": "i"}}
-        })
+        if not query:  # search by tag, partial match
+            query = db["dorms"].find({
+                "tags": {"$elemMatch": {"$regex": search_text, "$options": "i"}}
+            })
+    else:
+        query = db["dorms"].find({})
 
     results = [dorm["name"] for dorm in query]
 
