@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
+from mongo_db import json_to_review
 
 
 from mongo_db import db
@@ -48,12 +49,13 @@ async def submit_review(
     dormID = db["dorms"].find_one({"name": dorm.strip()}).get("dormID")
     rating = {
         "roomSize": room_rating,
-        "diningProximity": acad_rating,
-        "academicProximity": dine_rating,
+        "diningProximity": dine_rating,
+        "academicProximity": acad_rating,
         "amenities": amen_rating,
         "comment": comment,
         "dormID": dormID
     }
-    print(rating)
+    json_to_review(rating)
+    # print(rating)
     # Redirect to home page after submission
     return RedirectResponse(url="/", status_code=303)

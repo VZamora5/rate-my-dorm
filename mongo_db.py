@@ -11,6 +11,7 @@ db = client.get_database("rate_my_dorm")
 dorms = db["dorms"] # create dorm table
 tags = db["tags"] # create tags table
 reviews = db["reviews"]
+users = db["users"]
 overall_ratings = db["overall_ratings"]
 
 def insert_dorm(document):
@@ -61,16 +62,6 @@ def trigger_overall_ratings(dormID):
 
 trigger_overall_ratings(4)
 
-test = {
-        "roomSize": 1,
-        "diningProximity": 1,
-        "academicProximity": 1,
-        "amenities": 1,
-        "comment": "it's fine",
-        "dormID": 4
-    }
-
 def json_to_review(file):
     reviews.insert_one(file)
 
-json_to_review(test)
