@@ -18,6 +18,7 @@ goBtn.addEventListener("click", async () => {
         resultsDiv.innerHTML = ""; // clear previous results
 
         if (data.results.length === 0) {
+            // Cannot find results
             const container = document.getElementById("results-container");
             const label = document.createElement("label");
             label.innerHTML = "Could not find results :(";
@@ -26,6 +27,7 @@ goBtn.addEventListener("click", async () => {
 
             container.appendChild(label);
         } else {
+            // Make list item for each building
             data.results.forEach(dorm => {
                 const li = document.createElement("li");
                 const a = document.createElement("a");

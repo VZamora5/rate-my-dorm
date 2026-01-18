@@ -3,7 +3,6 @@ from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
-import json
 
 from mongo_db import db, reviews, trigger_overall_ratings
 
@@ -50,23 +49,16 @@ async def dorms(req: SearchRequest):
                 "tags": {"$elemMatch": {"$regex": search_text, "$options": "i"}}
             })
     else:
+        # find all dorms
         query = db["dorms"].find({})
 
-    results = [dorm["name"] for dorm in query]
+    results = [dorm["name"] for dorm in query] # get dorm names
 
     return {"results": results}
 
 # Dynamic dorm page route
 @app.get("/dorm-review/{dorm_name}", response_class=HTMLResponse)
 async def dorm_review(request: Request, dorm_name: str):
-    # Here, you would fetch dorm info from your database
-    # dorm_info = get_dorm_info(dorm_name)  # <-- replace with your actual DB call
-    # query = {"name": dorm_name}
-
-    # query_filter = {"name": dorm_name}
-    # projection = {"_id": 1}
-    # document = collection.find_one(query_filter, projection)
-
     dorm = db["dorms"].find_one({"name": dorm_name.strip()})
     dormID = dorm.get("dormID")
     overall_rating = db["overall_ratings"].find_one({"dormID": dormID})
@@ -82,11 +74,6 @@ async def dorm_review(request: Request, dorm_name: str):
             "reviews": reviews
         }
     )
-
-# Example helper (replace with real DB)
-def get_dorm_info(name):
-    ...
-    return ...
 
 @app.get("/housing-info", response_class=HTMLResponse)
 async def housing_info(request: Request):
@@ -121,6 +108,6 @@ async def submit_review(
     }
     reviews.insert_one(rating)
     trigger_overall_ratings(dormID)
-    # print(rating)
+
     # Redirect to home page after submission
     return RedirectResponse(url="/", status_code=303)
