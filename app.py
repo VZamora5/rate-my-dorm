@@ -4,10 +4,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from mongo_db import json_to_review
 
-
-from mongo_db import db
-from mongo_db import reviews
-from mongo_db import trigger_overall_ratings
+from mongo_db import db, reviews, trigger_overall_ratings
 
 app = FastAPI()
 
