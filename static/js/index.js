@@ -1,42 +1,33 @@
-const goBtn = document.getElementById("add-recipe");
-const input = document.getElementById("recipe-url");
-const yield = document.getElementById("servingYield");
+const goBtn = document.getElementById("goBtn");
 
-// when user searches a recipe
 goBtn.addEventListener("click", async () => {
-    const recipe_url = document.getElementById("recipe-url")
-    let url = recipe_url.value;
+    console.log("search");
+    const input = document.getElementById("search-input");
+    const search = input.value;
 
-    // send POST request to FastAPI
-    const response = await fetch("/search-recipe", {
+    // Send POST request to FastAPI endpoint /search-dorms
+    const response = await fetch("/search-dorms", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-            recipe_url: url
-        })
+        body: JSON.stringify({ search })
     });
-    const data = await response.json();
-    const input_error = document.getElementById("input-error")
-    input_error.textContent = " ";
 
-    // validate data
-    if (response.status === 400) {
-        input_error.textContent = "Please enter a recipe link!"
-    }
-    else if (response.status === 404) {
-        input_error.textContent = "Unable to find recipe :("
-    }
-    else if (response.status === 200) {
-        // reveal ingredient container
-        document.getElementById("ingredient-container").hidden = false;
-        const ingredientList = document.getElementById("ingredient-list");
-        yield.textContent = data.yields;
-        write_list(ingredientList, data.ingredients)
-        recipe_url.value = "";
-        input_error.textContent = " ";
-    }
+    // Parse JSON response
+    const data = await response.json();
+
+    // Log results (or display them in your page)
+    console.log(data);
+
+    // Optional: display results in a div
+    const resultsDiv = document.getElementById("results");
+    resultsDiv.innerHTML = ""; // clear previous results
+    data.results.forEach(dorm => {
+        const p = document.createElement("p");
+        p.textContent = dorm;
+        resultsDiv.appendChild(p);
+    });
 });
 
 document.addEventListener("keydown", (e) => {
