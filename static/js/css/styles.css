@@ -244,9 +244,9 @@ body {
 
 #housing-block {
     background-color: var(--crimson-red);
-    /* border-radius: 15px; */
+    border-radius: 15px;
     margin: auto;
-    padding: 5px;
+    padding: 10px 50px;
     box-shadow: 13px 10px 2px 0px rgba(0, 0, 0, 0.25);
     display: flex;
     flex-direction: column;
@@ -257,8 +257,12 @@ body {
 #housing-block h1, h2, h3, h4, button {
     font-family: 'Agdasima', sans-serif;
 }
+
+#housing-block button {
+    font-size: 18px;
+}
 .average-rating {
-    border: solid 5px black;
+    /* border: solid 5px black; */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -289,11 +293,12 @@ svg path {
 }
 
 .house-additonal-ratings {
-    border: solid 1px orange;
+    /* border: solid 1px green; */
     background-color: var(--gray);
-    max-width: 30%;
-    padding: 0px 25px;
+    padding: 5px 25px;
+    margin-right: 50px;
 }
+
 .additional-ratings-section {
     display: flex;
     flex-direction: column;
@@ -304,24 +309,83 @@ svg path {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    max-width: 80%;
+    justify-content: space-evenly;
     align-self: center;
 } 
-
+#housing-block h2 {
+    font-size: 40px;
+}
 #housing-block h3 {
     color: white;
+    font-size: 25px;
+}
+#housing-block h4 {
+    font-size: 25px;
 }
 
 .dorm-name {
-    background-color: white;
-    min-width: 30%;
+    background-color: rgb(255, 255, 255);
+    max-width: 50%;
     text-align: center;
     padding: 10px;
-    border-radius: 16px;
+    border-radius: 10px;
 }
 
 .ratings-reviews {
-    display: flex;
-    flex-direction: row;
+    /* border: solid 1px yellow; */
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.house-ratings-category {
+    padding: 10px auto;
+    text-align: left;
+    /* border: solid 1px orange; */
+}
+.house-ratings-category *{
+    margin: auto;
+}
 
+.review-box {
+    background-color: var(--gray);
+    overflow: auto;
+    overflow-x: hidden;
+    padding: 20px;
+}
+
+.review {
+    display: grid;
+}
+
+.review-top {
+    background-color: #D9D9D9;
+    border-radius: 15px 15px 0px 0px;
+    max-width: 70%;
+}
+.review-text {
+    background-color: var(--crimson-red);
+}
+
+.review-ratings {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    background-color: #D9D9D9;
+    border-radius: 0px 0px 15px 15px;
+    border: solid 2px yellow;
+}
+
+.review-ratings-category {
+    /* border: solid 2px red; */
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+    text-align: center;
+}
+
+.review-ratings-category h5 {
+    text-align: right;
+    font-family: 'Agdasima', sans-serif;
+    font-size: 15px;
+    font-weight: 100;
+    
 }
