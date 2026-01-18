@@ -5,6 +5,8 @@ from fastapi.staticfiles import StaticFiles
 
 
 from mongo_db import db
+from mongo_db import reviews
+from mongo_db import trigger_overall_ratings
 
 app = FastAPI()
 
@@ -54,6 +56,8 @@ async def submit_review(
         "comment": comment,
         "dormID": dormID
     }
-    print(rating)
+    reviews.insert_one(rating)
+    trigger_overall_ratings(dormID)
+    # print(rating)
     # Redirect to home page after submission
     return RedirectResponse(url="/", status_code=303)
