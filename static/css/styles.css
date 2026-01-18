@@ -451,3 +451,34 @@ body {
     font-weight: 100;
     
 }
+
+ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+li {
+    font-family: 'Agdasima', sans-serif;
+    color: var(--crimson-red); 
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center; 
+}
+
+li::before {
+    content: "";
+    display: inline-block;
+    width: 30px;  
+    height: 30px; 
+    background-image: url('./GompeiPFP.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 15px; 
+}
+
+li a {
+    color: (--crimson-red);
+    text-decoration: none;
+    transition: 0.3s;
+}
