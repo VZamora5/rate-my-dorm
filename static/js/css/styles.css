@@ -1,7 +1,7 @@
 /*Custom*/
 @font-face {
     font-family: "Borsork";
-    src: url(.../boorsok.ttf) format("truetype");
+    src: url(/static/js/boorsok.ttf) format("truetype");
     font-weight: bold;
     font-style: normal;
 }
@@ -86,19 +86,68 @@ body {
     margin-bottom: 30px;
 }
 
+.review-card label {
+    font-size: 1.5rem; 
+    font-weight: 700;
+    font-family: 'Agdasima', sans-serif;
+    margin-bottom: 10px;
+}
+
 .form-row {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin-bottom: 20px;
 }
 
-.dorm-input {
-    background: var(--white);
-    border: none;
-    border-radius: 10px;
-    padding: 5px 20px;
+.review-card label, 
+.additional-ratings p {
+    font-size: 2.2rem; 
+    font-weight: 700;
     font-family: 'Agdasima', sans-serif;
-    width: 200px;
+    color: white;
+    margin: 0;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    margin-right: 30px; 
+}
+
+.additional-ratings p {
+    font-size: 2.2rem; 
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.grid-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.grid-item label{
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+.dorm-input {
+    font-size: 1.2rem;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: none;
+    font-family: 'Agdasima', sans-serif;
+    min-width: 250px;
+}
+
+.review-text-area label {
+    display: block;
+    margin-bottom: 15px;
 }
 
 .star-rating {
@@ -144,7 +193,8 @@ body {
 .rating-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 15px;
+    gap: 20px 60px;
+    margin-top: 15px;
 }
 
 .review-text-area textarea {
@@ -168,7 +218,8 @@ body {
 .submit-review-btn {
     background-color: var(--white); /* White background */
     color: var(--crimson-red);     /* Crimson text */
-    font-family: 'Borsork', sans-serif; /* Using your heading font for impact */
+    font-family: 'agdasima', sans-serif; /* Using your heading font for impact */
+    font-weight: bold;
     font-size: 1.5rem;
     padding: 12px 40px;
     border: none;
