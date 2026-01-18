@@ -92,6 +92,17 @@ buildings = [
     },
 ]
 
+for i in range(12):
+    db["overall_ratings"].insert_one({
+        "overallRating": 5,
+        "roomSize": 5,
+        "diningProximity": 5,
+        "academicProximity": 5,
+        "amenities": 5,
+        "reviewCount": 0,
+        "dormID": i+1
+    })
+
 reviews = [
     {
         "userID": 1,
@@ -115,18 +126,6 @@ reviews = [
         
 ]
 
-overall_ratings = [
-    {
-        "overallRating": 4,
-        "roomSize": 4,
-        "diningProximity": 4,
-        "academicProximity": 4,
-        "amenities": 4,
-        "reviewCount": 1,
-        "dormID": 4
-    }
-]
-
 users = [
     {
         "username": "smccarty",
@@ -142,7 +141,6 @@ users = [
 
 db["dorms"].insert_many(buildings)
 db["reviews"].insert_many(reviews)
-db["overall_ratings"].insert_many(overall_ratings)
 db["users"].insert_many(users)
 
 # all_dorms = db["dorms"].count_documents({})  # find() with no filter returns everything

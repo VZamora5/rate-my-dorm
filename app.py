@@ -42,7 +42,6 @@ async def dorms(req: SearchRequest):
     # Query with partial match (case-insensitive)
     query = db["dorms"].find({"name": {"$regex": search_text, "$options": "i"}})
     results = [dorm.get("name") for dorm in query]
-    print(results)
 
     return {"results": results}
 
@@ -57,40 +56,22 @@ async def dorm_review(request: Request, dorm_name: str):
     # projection = {"_id": 1}
     # document = collection.find_one(query_filter, projection)
 
-    pipeline = [
-        {
-            "$match": {"name": dorm_name}
-        },
-        {
-            "$project": {"_id": 0, 
-                         "id": "$dormID"}
-        },
-        {
-            "$lookup":{
-                "from": "OverallRating",
-                "localField": "id",
-                "foreignField": "id",
-                "as": "overall"
-            }
-        },
-        {
-             "$lookup":{
-                "from": "Review",
-                "localField": "id",
-                "foreignField": "id",
-                "as": "review"
-            }
-        }
-    ]
-    result = list(db.dorms.aggregate(pipeline))
-    print(json.dumps(result, indent=4))
+    dorm = db["dorms"].find_one({"name": dorm_name.strip()})
+    dormID = dorm.get("dormID")
+    overall_rating = db["overall_ratings"].find_one({"dormID": dormID})
+    reviews = db["reviews"].find({"dormID": dormID})
+
+    print("overall_rating =", overall_rating)
+    print("type =", type(overall_rating))
 
     return templates.TemplateResponse(
         "dorms.html",
         {
             "request": request,
             "dorm_name": dorm_name,
-            "dorm_info": result
+            "tags": dorm["tags"],
+            "overall_rating": overall_rating,
+            "reviews": reviews
         }
     )
 

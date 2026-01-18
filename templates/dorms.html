@@ -1,38 +1,26 @@
 {% extends "layout.html" %}
 {% block content %}
 <section id = "housing-block">
-    <h2 class = "dorm-name">Dorm Hall Name</h2>
+    <h2 class = "dorm-name">{{ dorm_name }}</h2>
     <img src = "{%block img %}{%endblock%}">
 
     <div class = "average-rating">
         <h3>Avg. Rating:</h3>
         <div class = "stars">
-            <svg width="70" height="66" viewBox="0 0 70 66" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M34.5686 0L42.7291 24.8754H69.1371L47.7726 40.2492L55.9331 65.1246L34.5686 49.7508L13.204 65.1246L21.3645 40.2492L0 24.8754H26.408L34.5686 0Z" fill="white"/>
-            </svg>
-            <svg width="70" height="66" viewBox="0 0 70 66" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M34.5686 0L42.7291 24.8754H69.1371L47.7726 40.2492L55.9331 65.1246L34.5686 49.7508L13.204 65.1246L21.3645 40.2492L0 24.8754H26.408L34.5686 0Z" fill="white"/>
-            </svg>
-            <svg width="70" height="66" viewBox="0 0 70 66" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M34.5686 0L42.7291 24.8754H69.1371L47.7726 40.2492L55.9331 65.1246L34.5686 49.7508L13.204 65.1246L21.3645 40.2492L0 24.8754H26.408L34.5686 0Z" fill="white"/>
-            </svg>
-            <svg width="70" height="66" viewBox="0 0 70 66" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M34.5686 0L42.7291 24.8754H69.1371L47.7726 40.2492L55.9331 65.1246L34.5686 49.7508L13.204 65.1246L21.3645 40.2492L0 24.8754H26.408L34.5686 0Z" fill="white"/>
-            </svg>
-            <svg width="70" height="66" viewBox="0 0 70 66" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M34.5686 0L42.7291 24.8754H69.1371L47.7726 40.2492L55.9331 65.1246L34.5686 49.7508L13.204 65.1246L21.3645 40.2492L0 24.8754H26.408L34.5686 0Z" fill="white"/>
-            </svg>
+            {% for _ in range(overall_rating["overallRating"]) %}
+                <svg width="70" height="66" viewBox="0 0 70 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M34.5686 0L42.7291 24.8754H69.1371L47.7726 40.2492L55.9331 65.1246L34.5686 49.7508L13.204 65.1246L21.3645 40.2492L0 24.8754H26.408L34.5686 0Z" fill="white"/>
+                </svg>
+            {% endfor %}
         </div>
     </div>
 
         <section class = "tags-section">
         <h3>Tags:</h3>
         <div class = "house-tags">
-            <button class = "tag"><b>Pretend this is a tag</b></button>
-            <button class = "tag"><b>Pretend this is a tag</b></button>
-            <button class = "tag"><b>Pretend this is a tag</b></button>
-            <button class = "tag"><b>Pretend this is a tag</b></button>
-            <button class = "tag"><b>Pretend this is a tag</b></button>
+            {% for tag in tags %}
+            <button class = "tag"><b>{{tag}}</b></button>
+            {% endfor %}
         </div>
     </section>
 
@@ -43,81 +31,41 @@
                 <div class = "house-ratings-category">
                     <h4>Room Size</h4>
                     <div class = "stars">
-                        <svg width="70" height="66" viewBox="0 0 70 66" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M34.5686 0L42.7291 24.8754H69.1371L47.7726 40.2492L55.9331 65.1246L34.5686 49.7508L13.204 65.1246L21.3645 40.2492L0 24.8754H26.408L34.5686 0Z" fill="white"/>
-                        </svg>
-                        <svg width="70" height="66" viewBox="0 0 70 66" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M34.5686 0L42.7291 24.8754H69.1371L47.7726 40.2492L55.9331 65.1246L34.5686 49.7508L13.204 65.1246L21.3645 40.2492L0 24.8754H26.408L34.5686 0Z" fill="white"/>
-                        </svg>
-                        <svg width="70" height="66" viewBox="0 0 70 66" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M34.5686 0L42.7291 24.8754H69.1371L47.7726 40.2492L55.9331 65.1246L34.5686 49.7508L13.204 65.1246L21.3645 40.2492L0 24.8754H26.408L34.5686 0Z" fill="white"/>
-                        </svg>
-                        <svg width="70" height="66" viewBox="0 0 70 66" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M34.5686 0L42.7291 24.8754H69.1371L47.7726 40.2492L55.9331 65.1246L34.5686 49.7508L13.204 65.1246L21.3645 40.2492L0 24.8754H26.408L34.5686 0Z" fill="white"/>
-                        </svg>
-                        <svg width="70" height="66" viewBox="0 0 70 66" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M34.5686 0L42.7291 24.8754H69.1371L47.7726 40.2492L55.9331 65.1246L34.5686 49.7508L13.204 65.1246L21.3645 40.2492L0 24.8754H26.408L34.5686 0Z" fill="white"/>
-                        </svg>
+                        {% for _ in range(overall_rating["roomSize"]) %}
+                            <svg width="70" height="66" viewBox="0 0 70 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M34.5686 0L42.7291 24.8754H69.1371L47.7726 40.2492L55.9331 65.1246L34.5686 49.7508L13.204 65.1246L21.3645 40.2492L0 24.8754H26.408L34.5686 0Z" fill="white"/>
+                            </svg>
+                        {% endfor %}
                     </div>
                 </div>
                 <div class = "house-ratings-category">
                     <h4>Dining Proximity</h4>
                     <div class = "stars">
-                        <svg width="70" height="66" viewBox="0 0 70 66" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M34.5686 0L42.7291 24.8754H69.1371L47.7726 40.2492L55.9331 65.1246L34.5686 49.7508L13.204 65.1246L21.3645 40.2492L0 24.8754H26.408L34.5686 0Z" fill="white"/>
-                        </svg>
-                        <svg width="70" height="66" viewBox="0 0 70 66" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M34.5686 0L42.7291 24.8754H69.1371L47.7726 40.2492L55.9331 65.1246L34.5686 49.7508L13.204 65.1246L21.3645 40.2492L0 24.8754H26.408L34.5686 0Z" fill="white"/>
-                        </svg>
-                        <svg width="70" height="66" viewBox="0 0 70 66" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M34.5686 0L42.7291 24.8754H69.1371L47.7726 40.2492L55.9331 65.1246L34.5686 49.7508L13.204 65.1246L21.3645 40.2492L0 24.8754H26.408L34.5686 0Z" fill="white"/>
-                        </svg>
-                        <svg width="70" height="66" viewBox="0 0 70 66" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M34.5686 0L42.7291 24.8754H69.1371L47.7726 40.2492L55.9331 65.1246L34.5686 49.7508L13.204 65.1246L21.3645 40.2492L0 24.8754H26.408L34.5686 0Z" fill="white"/>
-                        </svg>
-                        <svg width="70" height="66" viewBox="0 0 70 66" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M34.5686 0L42.7291 24.8754H69.1371L47.7726 40.2492L55.9331 65.1246L34.5686 49.7508L13.204 65.1246L21.3645 40.2492L0 24.8754H26.408L34.5686 0Z" fill="white"/>
-                        </svg>
+                        {% for _ in range(overall_rating["diningProximity"]) %}
+                            <svg width="70" height="66" viewBox="0 0 70 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M34.5686 0L42.7291 24.8754H69.1371L47.7726 40.2492L55.9331 65.1246L34.5686 49.7508L13.204 65.1246L21.3645 40.2492L0 24.8754H26.408L34.5686 0Z" fill="white"/>
+                            </svg>
+                        {% endfor %}
                     </div>
                 </div>
                 <div class = "house-ratings-category">
                     <h4>Academic Proximity</h4>
                     <div class = "stars">
-                        <svg width="70" height="66" viewBox="0 0 70 66" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M34.5686 0L42.7291 24.8754H69.1371L47.7726 40.2492L55.9331 65.1246L34.5686 49.7508L13.204 65.1246L21.3645 40.2492L0 24.8754H26.408L34.5686 0Z" fill="white"/>
-                        </svg>
-                        <svg width="70" height="66" viewBox="0 0 70 66" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M34.5686 0L42.7291 24.8754H69.1371L47.7726 40.2492L55.9331 65.1246L34.5686 49.7508L13.204 65.1246L21.3645 40.2492L0 24.8754H26.408L34.5686 0Z" fill="white"/>
-                        </svg>
-                        <svg width="70" height="66" viewBox="0 0 70 66" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M34.5686 0L42.7291 24.8754H69.1371L47.7726 40.2492L55.9331 65.1246L34.5686 49.7508L13.204 65.1246L21.3645 40.2492L0 24.8754H26.408L34.5686 0Z" fill="white"/>
-                        </svg>
-                        <svg width="70" height="66" viewBox="0 0 70 66" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M34.5686 0L42.7291 24.8754H69.1371L47.7726 40.2492L55.9331 65.1246L34.5686 49.7508L13.204 65.1246L21.3645 40.2492L0 24.8754H26.408L34.5686 0Z" fill="white"/>
-                        </svg>
-                        <svg width="70" height="66" viewBox="0 0 70 66" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M34.5686 0L42.7291 24.8754H69.1371L47.7726 40.2492L55.9331 65.1246L34.5686 49.7508L13.204 65.1246L21.3645 40.2492L0 24.8754H26.408L34.5686 0Z" fill="white"/>
-                        </svg>
+                        {% for _ in range(overall_rating["academicProximity"]) %}
+                            <svg width="70" height="66" viewBox="0 0 70 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M34.5686 0L42.7291 24.8754H69.1371L47.7726 40.2492L55.9331 65.1246L34.5686 49.7508L13.204 65.1246L21.3645 40.2492L0 24.8754H26.408L34.5686 0Z" fill="white"/>
+                            </svg>
+                        {% endfor %}
                     </div>
                 </div>
                 <div class = "house-ratings-category">
                     <h4>Amenities</h4>
                     <div class = "stars">
-                        <svg width="70" height="66" viewBox="0 0 70 66" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M34.5686 0L42.7291 24.8754H69.1371L47.7726 40.2492L55.9331 65.1246L34.5686 49.7508L13.204 65.1246L21.3645 40.2492L0 24.8754H26.408L34.5686 0Z" fill="white"/>
-                        </svg>
-                        <svg width="70" height="66" viewBox="0 0 70 66" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M34.5686 0L42.7291 24.8754H69.1371L47.7726 40.2492L55.9331 65.1246L34.5686 49.7508L13.204 65.1246L21.3645 40.2492L0 24.8754H26.408L34.5686 0Z" fill="white"/>
-                        </svg>
-                        <svg width="70" height="66" viewBox="0 0 70 66" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M34.5686 0L42.7291 24.8754H69.1371L47.7726 40.2492L55.9331 65.1246L34.5686 49.7508L13.204 65.1246L21.3645 40.2492L0 24.8754H26.408L34.5686 0Z" fill="white"/>
-                        </svg>
-                        <svg width="70" height="66" viewBox="0 0 70 66" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M34.5686 0L42.7291 24.8754H69.1371L47.7726 40.2492L55.9331 65.1246L34.5686 49.7508L13.204 65.1246L21.3645 40.2492L0 24.8754H26.408L34.5686 0Z" fill="white"/>
-                        </svg>
-                        <svg width="70" height="66" viewBox="0 0 70 66" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M34.5686 0L42.7291 24.8754H69.1371L47.7726 40.2492L55.9331 65.1246L34.5686 49.7508L13.204 65.1246L21.3645 40.2492L0 24.8754H26.408L34.5686 0Z" fill="white"/>
-                        </svg>
+                        {% for _ in range(overall_rating["amenities"]) %}
+                            <svg width="70" height="66" viewBox="0 0 70 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M34.5686 0L42.7291 24.8754H69.1371L47.7726 40.2492L55.9331 65.1246L34.5686 49.7508L13.204 65.1246L21.3645 40.2492L0 24.8754H26.408L34.5686 0Z" fill="white"/>
+                            </svg>
+                        {% endfor %}
                     </div>
                 </div>
       
