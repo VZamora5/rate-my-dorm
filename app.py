@@ -40,8 +40,14 @@ async def dorms(req: SearchRequest):
     search_text = req.search.strip()
 
     # Query with partial match (case-insensitive)
-    query = db["dorms"].find({"name": {"$regex": search_text, "$options": "i"}})
-    results = [dorm.get("name") for dorm in query]
+    query = list(db["dorms"].find({"name": {"$regex": search_text, "$options": "i"}}))
+
+    if not query:  # search by tag, partial match
+        query = db["dorms"].find({
+            "tags": {"$elemMatch": {"$regex": search_text, "$options": "i"}}
+        })
+
+    results = [dorm["name"] for dorm in query]
 
     return {"results": results}
 
@@ -60,9 +66,6 @@ async def dorm_review(request: Request, dorm_name: str):
     dormID = dorm.get("dormID")
     overall_rating = db["overall_ratings"].find_one({"dormID": dormID})
     reviews = db["reviews"].find({"dormID": dormID})
-
-    print("overall_rating =", overall_rating)
-    print("type =", type(overall_rating))
 
     return templates.TemplateResponse(
         "dorms.html",
