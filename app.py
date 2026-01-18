@@ -3,6 +3,7 @@ from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
+import json
 
 from mongo_db import db, reviews, trigger_overall_ratings
 
@@ -46,14 +47,47 @@ async def dorms(req: SearchRequest):
 @app.get("/dorm-review/{dorm_name}", response_class=HTMLResponse)
 async def dorm_review(request: Request, dorm_name: str):
     # Here, you would fetch dorm info from your database
-    dorm_info = get_dorm_info(dorm_name)  # <-- replace with your actual DB call
+    # dorm_info = get_dorm_info(dorm_name)  # <-- replace with your actual DB call
+    # query = {"name": dorm_name}
+
+    # query_filter = {"name": dorm_name}
+    # projection = {"_id": 1}
+    # document = collection.find_one(query_filter, projection)
+
+    pipeline = [
+        {
+            "$match": {"name": dorm_name}
+        },
+        {
+            "$project": {"_id": 0, 
+                         "id": "$dormID"}
+        },
+        {
+            "$lookup":{
+                "from": "OverallRating",
+                "localField": "id",
+                "foreignField": "id",
+                "as": "overall"
+            }
+        },
+        {
+             "$lookup":{
+                "from": "Review",
+                "localField": "id",
+                "foreignField": "id",
+                "as": "review"
+            }
+        }
+    ]
+    result = list(db.dorms.aggregate(pipeline))
+    print(json.dumps(result, indent=4))
 
     return templates.TemplateResponse(
         "dorms.html",
         {
             "request": request,
             "dorm_name": dorm_name,
-            "dorm_info": dorm_info
+            "dorm_info": result
         }
     )
 
