@@ -49,7 +49,7 @@ async def dorm_review(request: Request, dorm_name: str):
     dorm_info = get_dorm_info(dorm_name)  # <-- replace with your actual DB call
 
     return templates.TemplateResponse(
-        "dorm-review.html",
+        "dorms.html",
         {
             "request": request,
             "dorm_name": dorm_name,
