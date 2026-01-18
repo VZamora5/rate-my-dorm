@@ -17,6 +17,10 @@ templates = Jinja2Templates(directory="templates")
 async def home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
+@app.get("/login", response_class=HTMLResponse)
+async def add_review(request: Request):
+    return templates.TemplateResponse("login.html", {"request": request})
+
 @app.get("/create-review", response_class=HTMLResponse)
 async def add_review(request: Request):
     return templates.TemplateResponse("review.html", {"request": request})
@@ -24,8 +28,6 @@ async def add_review(request: Request):
 @app.get("/search-dorms", response_class=HTMLResponse)
 async def to_dorm(request: Request):
     return templates.TemplateResponse("search.html", {"request": request})
-
-
 
 @app.get("/housing-info", response_class=HTMLResponse)
 async def housing_info(request: Request):
