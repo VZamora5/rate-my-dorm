@@ -452,7 +452,7 @@ body {
     background-color: var(--white);
     color: var(--crimson-red);
     border: none;
-    border-radius: 10px;
+    border-radius: 0px 15px 15px 0px;
     font-family: 'Borsork', sans-serif;
     font-size: 1.2rem;
     cursor: pointer;
@@ -464,7 +464,6 @@ body {
     flex-direction: column;
     justify-content: start;
     background-color: #D9D9D9;
-    border-radius: 0px 0px 15px 15px;
     border: solid 2px yellow;
 }
 
@@ -580,4 +579,17 @@ body {
 .dorm-list li a:hover {
     color: #cb333f !important; /* Slightly brighter crimson */
     transform: translateX(10px); /* Subtle slide to the right */
+}
+
+.form-control {
+    width: 50%;
+    font-size: 18px;
+    border-radius: 15px 0px 0px 15px;
+    padding-left: 15px;
+}
+
+/* 🔹 Unified focus state */
+.form-control:focus-within,
+.search-btn:focus-within {
+    border-color: #8b0000; /* darker crimson */
 }
