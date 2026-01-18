@@ -20,6 +20,10 @@ def insert_dorm(document):
 def dorms_with_tag(tag):
     dorms.tags.find({"tags" : tag})
 
+# def trigger_overall_ratings(dormID):
+#     dorm_reviews = list(reviews.find({"dormID": dormID}))
+#     new_review_count = overall_ratings.find({""})
+
 def trigger_overall_ratings(dormID):
     dorm_reviews = list(reviews.find({"dormID": dormID}))
     review_count = len(dorm_reviews)
@@ -59,9 +63,3 @@ def trigger_overall_ratings(dormID):
         },
         upsert=True
     )
-
-trigger_overall_ratings(4)
-
-def json_to_review(file):
-    reviews.insert_one(file)
-
