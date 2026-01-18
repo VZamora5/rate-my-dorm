@@ -20,12 +20,14 @@ async def home(request: Request):
     return templates.TemplateResponse("search.html", {"request": request})
 
 @app.get("/login", response_class=HTMLResponse)
-async def add_review(request: Request):
+async def login(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
 
 @app.get("/create-review", response_class=HTMLResponse)
 async def add_review(request: Request):
-    return templates.TemplateResponse("review.html", {"request": request})
+    query = db["dorms"].find({})
+    dorm_names = [dorm["name"] for dorm in query]
+    return templates.TemplateResponse("review.html", {"request": request, "dorm_names": dorm_names})
 
 @app.get("/search-dorms", response_class=HTMLResponse)
 async def to_dorm(request: Request):

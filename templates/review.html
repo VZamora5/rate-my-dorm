@@ -12,18 +12,9 @@
                     <div class="form-group">
                         <label>Dorm:</label>
                         <select name="dorm" class="dorm-input">
-                            <option>Morgan Hall</option>
-                            <option>Sanford Riley Hall</option>
-                            <option>Daniels Hall</option>
-                            <option>East Hall</option>
-                            <option>Faraday Hall</option>
-                            <option>Founders Hall</option>
-                            <option>Institute Hall</option>
-                            <option>Messenger Hall</option>
-                            <option>Stoddard Complex</option>
-                            <option>WPI Townhouses</option>
-                            <option>Wachusett House</option>
-                            <option>Trowbridge House</option>
+                            {% for name in dorm_names %}
+                                <option>{{ name }}</option>
+                            {% endfor %}
                         </select>
                     </div>
                 </div>
