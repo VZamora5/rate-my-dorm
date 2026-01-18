@@ -3,6 +3,7 @@ from mongo_db import db
 db["dorms"].delete_many({})
 db["reviews"].delete_many({})
 db["overall_ratings"].delete_many({})
+db["users"].delete_many({})
 
 buildings = [
     {
@@ -93,18 +94,30 @@ buildings = [
 
 reviews = [
     {
+        "userID": 1,
         "roomSize": 4,
         "diningProximity": 4,
         "academicProximity": 4,
         "amenities": 4,
         "comment": 4,
         "dormID": 4
+    }, 
+    
+    {
+        "userID": 2,
+        "roomSize": 0,
+        "diningProximity": 0,
+        "academicProximity": 0,
+        "amenities": 0,
+        "comment": "bro this sucks",
+        "dormID": 4
     }
+        
 ]
 
 overall_ratings = [
     {
-        "overall": 4,
+        "overallRating": 4,
         "roomSize": 4,
         "diningProximity": 4,
         "academicProximity": 4,
@@ -114,9 +127,23 @@ overall_ratings = [
     }
 ]
 
+users = [
+    {
+        "username": "smccarty",
+        "password": "12345",
+        "userID": 1
+    },
+    {
+        "username": "jdoe",
+        "password": "abc",
+        "userID": 2
+    }
+]
+
 db["dorms"].insert_many(buildings)
 db["reviews"].insert_many(reviews)
 db["overall_ratings"].insert_many(overall_ratings)
+db["users"].insert_many(users)
 
 # all_dorms = db["dorms"].count_documents({})  # find() with no filter returns everything
 
