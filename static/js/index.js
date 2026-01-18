@@ -1,4 +1,5 @@
 const goBtn = document.getElementById("goBtn");
+const searchInput = document.getElementById("search-input");
 
 goBtn.addEventListener("click", async () => {
     const input = document.getElementById("search-input");
@@ -43,7 +44,7 @@ goBtn.addEventListener("click", async () => {
 });
 
 document.addEventListener("keydown", (e) => {
-    if (e.key == "Enter" && input === document.activeElement) {
+    if (e.key == "Enter" && searchInput === document.activeElement) {
         goBtn.classList.add("press"); // Simulate button click
         goBtn.click();
     }
