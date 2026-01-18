@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block title %}Search{% endblock %}
+{% block content %}
+<div class="dorms-header">
+    <div class="logo no-select-text">
+        <h1>Search for Housing</h1>
+    </div>
+    <div class="search-box">
+        <input id="input" type="text" class="form-control" placeholder="Search by dorm name or tag">
+        <button id="goBtn" class="search-btn" type="button">GO!</button>
+    </div>
+    <p id="input-error" class="error-message no-select-text"></p>
+</div>
+{% endblock %}

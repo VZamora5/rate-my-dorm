@@ -21,9 +21,11 @@ async def home(request: Request):
 async def add_review(request: Request):
     return templates.TemplateResponse("review.html", {"request": request})
 
-@app.get("/dorms", response_class=HTMLResponse)
+@app.get("/search-dorms", response_class=HTMLResponse)
 async def to_dorm(request: Request):
-    return templates.TemplateResponse("dorms.html", {"request": request})
+    return templates.TemplateResponse("search.html", {"request": request})
+
+
 
 @app.get("/housing-info", response_class=HTMLResponse)
 async def housing_info(request: Request):

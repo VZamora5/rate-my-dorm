@@ -325,3 +325,57 @@ svg path {
     flex-direction: row;
 
 }
+
+/* Container for the Hero Search Section */
+.dorms-header {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: var(--crimson-red);
+    color: white;
+    border-radius: 0 0 20px 20px; /* Optional: rounds bottom corners */
+    margin-bottom: 40px;
+}
+
+.dorms-header h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+/* Centering the Search Box */
+.search-box {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.search-form {
+    display: flex;
+    width: 100%;
+    max-width: 600px; /* Limits width so it doesn't stretch too far */
+    gap: 10px;
+}
+
+.search-form input {
+    flex: 1;
+    padding: 15px 20px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    border: none;
+    font-family: 'Agdasima', sans-serif;
+}
+
+.search-btn {
+    padding: 15px 30px;
+    background-color: var(--white);
+    color: var(--crimson-red);
+    border: none;
+    border-radius: 10px;
+    font-family: 'Borsork', sans-serif;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.search-btn:hover {
+    transform: scale(1.05);
+}
