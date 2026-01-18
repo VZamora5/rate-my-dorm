@@ -270,18 +270,16 @@ body {
 }
 .stars > svg {
     max-width: 10%;
-    
 }
 
 .stars {
     margin: 5px;
-    
 }
 
-svg path {
+/* svg path {
     fill:#f5b301;
     filter: drop-shadow(2px 10px 2px rgba(0, 0, 0, 0.25));
-}
+} */
 
 #housing-block .tag {
     background-color: #CECECE;
@@ -361,14 +359,22 @@ svg path {
     border-radius: 15px 15px 0px 0px;
     max-width: 70%;
 }
-.review-text {
+
+.review-textbox {
     background-color: var(--crimson-red);
+}
+
+.review-text {
+    color: white;
+    margin-left: 15px;
 }
 
 .review-ratings {
     display: flex;
-    flex-direction: row;
-
+    flex-direction: column;
+    justify-content: start;
+    background-color: #D9D9D9;
+    border-radius: 0px 0px 15px 15px;
 }
 
 /* Container for the Hero Search Section */
@@ -444,4 +450,54 @@ svg path {
     font-size: 15px;
     font-weight: 100;
     
+}
+
+/* Container to center the whole block */
+.list-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.dorm-list {
+    list-style-type: none; /* Removes standard bullets */
+    padding: 0;
+    margin: 0;
+}
+
+.dorm-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px; /* Spacing between dorms */
+}
+
+/* The stylish Crimson text */
+.dorm-list li a {
+    font-family: 'Agdasima', sans-serif;
+    color: #AC2B37 !important; /* Forces WPI Crimson */
+    text-decoration: none !important; /* Removes the underline */
+    font-size: 3.5rem; /* Makes it big and bold */
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1;
+    transition: 0.3s ease;
+}
+
+/* The Gompei Bullet Point */
+.dorm-list li::before {
+    content: "";
+    display: inline-block;
+    width: 65px; /* Big enough to match the text */
+    height: 65px;
+    background-image: url('GompeiPFP.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 20px;
+}
+
+/* Hover effect to make it feel 'premium' */
+.dorm-list li a:hover {
+    color: #cb333f !important; /* Slightly brighter crimson */
+    transform: translateX(10px); /* Subtle slide to the right */
 }
