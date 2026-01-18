@@ -423,7 +423,6 @@ svg path {
 
 .search-btn:hover {
     transform: scale(1.05);
-}
     flex-direction: column;
     justify-content: start;
     background-color: #D9D9D9;
