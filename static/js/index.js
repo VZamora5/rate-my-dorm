@@ -1,33 +1,33 @@
 const goBtn = document.getElementById("goBtn");
 
 goBtn.addEventListener("click", async () => {
-    console.log("search");
     const input = document.getElementById("search-input");
-    const search = input.value;
+    const search = input.value.trim(); // remove leading/trailing spaces
+    if (!search) return; // ignore empty search
 
-    // Send POST request to FastAPI endpoint /search-dorms
-    const response = await fetch("/search-dorms", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ search })
-    });
+    try {
+        const response = await fetch("/search-dorms", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ search })
+        });
 
-    // Parse JSON response
-    const data = await response.json();
+        const data = await response.json();
+        const resultsDiv = document.getElementById("results");
+        resultsDiv.innerHTML = ""; // clear previous results
 
-    // Log results (or display them in your page)
-    console.log(data);
-
-    // Optional: display results in a div
-    const resultsDiv = document.getElementById("results");
-    resultsDiv.innerHTML = ""; // clear previous results
-    data.results.forEach(dorm => {
-        const p = document.createElement("p");
-        p.textContent = dorm;
-        resultsDiv.appendChild(p);
-    });
+        if (data.results.length === 0) {
+            resultsDiv.textContent = "No results found.";
+        } else {
+            data.results.forEach(dorm => {
+            const p = document.createElement("p");
+            p.textContent = dorm;
+            resultsDiv.appendChild(p);
+        });
+        }
+    } catch (err) {
+        console.error("Error fetching results:", err);
+    }
 });
 
 document.addEventListener("keydown", (e) => {

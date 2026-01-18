@@ -14,9 +14,6 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 # Load templates
 templates = Jinja2Templates(directory="templates")
 
-class SearchRequest(BaseModel):
-    search: str
-
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
@@ -33,29 +30,37 @@ async def add_review(request: Request):
 async def to_dorm(request: Request):
     return templates.TemplateResponse("search.html", {"request": request})
 
+class SearchRequest(BaseModel):
+    search: str
+
 @app.post("/search-dorms")
 async def dorms(req: SearchRequest):
-    query = req.search
+    # Get the search string from the request
+    search_text = req.search.strip()
 
-    # Example search logic
-    print(query)
+    # Query with partial match (case-insensitive)
+    query = db["dorms"].find({"name": {"$regex": search_text, "$options": "i"}})
+    results = [dorm.get("name") for dorm in query]
+    print(results)
 
-    return {"results": 2}
+    return {"results": results}
 
 # Dynamic dorm page route
-@app.get("/dorm-review/{dorm_name}", response_class=HTMLResponse)
-async def dorm_review(request: Request, dorm_name: str):
-    # Here, you would fetch dorm info from your database
-    dorm_info = get_dorm_info(dorm_name)  # <-- replace with your actual DB call
-
-    return templates.TemplateResponse(
-        "dorms.html",
-        {
-            "request": request,
-            "dorm_name": dorm_name,
-            "dorm_info": dorm_info
-        }
-    )
+@app.get("/search")
+async def search(request: Request, query: str = ""):
+    search_term = query.strip()
+    
+    # Query MongoDB for the exact name (case-insensitive)
+    dorm = db.dorms.find_one({
+        "name": {"$regex": f"^{search_term}$", "$options": "i"}
+    })
+    
+    if dorm:
+        # Redirect to the specific dorm page (e.g., /dorms/morgan)
+        return RedirectResponse(url=f"/dorms/{dorm['id']}")
+    
+    # If not found, send them back to the dorms list
+    return RedirectResponse(url="/dorms")
 
 # Example helper (replace with real DB)
 def get_dorm_info(name):
