@@ -75,11 +75,14 @@
     
         <section class = "student-reviews-section">
             <h3>Student Reviews:</h3>
-            {% for review in reviews %}
             <div class = "student-reviews-box">
+            {% for review in reviews %}
                 <div class = "review">
                     <div class = "review-top">
-                        <p><span class = "username">Gompei</span></p>
+                        <div class = "user-info">
+                            <img src = "../static/GompeiPFP.png" width = "50px">
+                            <p><span class = "username">Gompei</span></p>
+                        </div>
                     </div>
                     <div class = "review-textbox">
                         <p class = "review-text">{{ review["comment"] }}</p>
@@ -93,7 +96,7 @@
                                         <path d="M34.5686 0L42.7291 24.8754H69.1371L47.7726 40.2492L55.9331 65.1246L34.5686 49.7508L13.204 65.1246L21.3645 40.2492L0 24.8754H26.408L34.5686 0Z" fill="white"/>
                                     </svg>
                                 {% endfor %}
-                    </div>
+                            </div>
                         </div>
                         <div class = "review-ratings-category">
                             <h5>Dining Proximity:</h5>
@@ -103,6 +106,7 @@
                                         <path d="M34.5686 0L42.7291 24.8754H69.1371L47.7726 40.2492L55.9331 65.1246L34.5686 49.7508L13.204 65.1246L21.3645 40.2492L0 24.8754H26.408L34.5686 0Z" fill="white"/>
                                     </svg>
                                 {% endfor %}
+                            </div>
                         </div>
                         <div class = "review-ratings-category">
                             <h5>Academic Proximity:</h5>
@@ -126,8 +130,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
             {% endfor %}
+            </div>
         </section>
     </section>
 
