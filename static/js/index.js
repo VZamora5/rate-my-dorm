@@ -17,12 +17,24 @@ goBtn.addEventListener("click", async () => {
         resultsDiv.innerHTML = ""; // clear previous results
 
         if (data.results.length === 0) {
-            resultsDiv.textContent = "No results found.";
+            const container = document.getElementById("results-container");
+            const label = document.createElement("label");
+            label.innerHTML = "Could not find results :(";
+            
+            label.setAttribute("style", "font-family: 'Agdasima', sans-serif; font-size: font-size: 18px; font-weight: 700;")
+
+            container.appendChild(label);
         } else {
             data.results.forEach(dorm => {
-            const p = document.createElement("p");
-            p.textContent = dorm;
-            resultsDiv.appendChild(p);
+                const li = document.createElement("li");
+                const a = document.createElement("a");
+
+                // Encode the dorm name safely for URLs
+                a.href = "/dorm-review/" + encodeURIComponent(dorm);
+                a.textContent = dorm;
+
+                li.appendChild(a);
+                resultsDiv.appendChild(li);
         });
         }
     } catch (err) {
